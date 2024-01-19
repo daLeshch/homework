@@ -1,34 +1,31 @@
-
+import server
 import csv
 import time
 # from memory_profiler import memory_usage
 
 '''Перебор значений'''
 
-
-
 start_time = time.time()                                                                           # Таймер2 старт
 
 # открытие файла
-file = 'Export.csv'
+db = server.Database()
+db.open_database('Export.csv')
+file = db.data
 
 user = [-72.140337, 44.411036]
 
 
-def content_list(name):
+def content_list(dict):
     '''Получение материала для перебора'''
-    with open(name, 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        coord = {}
-        for row in reader:
-            key = row['FMID']
-            columns = ['x', 'y']
-            if key not in coord:
-                coord[key] = []
-
-            for n in columns:
-                if row[n]!='':
-                    coord[key].append(float(row[n]))
+    coord = {}
+    for row in dict:
+        key = row['FMID']
+        columns = ['x', 'y']
+        if key not in coord:
+            coord[key] = []
+        for n in columns:
+            if row[n]!='':
+                coord[key].append(float(row[n]))
 
     return coord
 
