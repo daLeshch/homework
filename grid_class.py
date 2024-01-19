@@ -278,7 +278,7 @@ class grid_search:
 
 if __name__ == '__main__':
     import server
-    from memory_profiler import memory_usage
+    # from memory_profiler import memory_usage
     import time
 
     db = server.Database()
@@ -312,4 +312,4 @@ if __name__ == '__main__':
  
     print(f"Время перебора по сетке: {execution_time} секунд")    
 
-    print(f'Memory usage: {memory_usage()}')    
+    # print(f'Memory usage: {memory_usage()}')
